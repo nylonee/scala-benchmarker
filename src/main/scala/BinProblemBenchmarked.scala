@@ -1,5 +1,5 @@
 import benchmarker.Benchmarker
-import algorithms.{BaseAlgorithm, KovidBestFitAlgorithm, KovidFirstFitAlgorithm, NihalAlgorithm}
+import algorithms._
 import monix.eval.Task
 import monix.execution.Scheduler.Implicits.global
 
@@ -11,8 +11,12 @@ object BinProblemBenchmarked extends Benchmarker {
     // Initialize the testing
     val testArray = List.range(1, 10000000).map { _ => Random.nextInt(1000) }
     val maxChunkSize = 900
-    val runsPerTest = 2
-    val algorithmsToTest: Seq[BaseAlgorithm] = Seq(NihalAlgorithm, KovidBestFitAlgorithm, KovidFirstFitAlgorithm)
+    val runsPerTest = 1
+    val algorithmsToTest: Seq[BaseAlgorithm] = Seq(
+      SampleAlgorithm,
+      BestFitAlgorithm,
+      FirstFitAlgorithm
+    )
 
     println("Starting benchmarking suite...")
 
